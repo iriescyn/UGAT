@@ -4,11 +4,11 @@
 //  Place this file outside your public web root if possible.
 // ============================================================
 
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');          // change to your MySQL user
-define('DB_PASS', '');              // change to your MySQL password
-define('DB_NAME', 'ugat_db');
-define('DB_PORT', 3306);
+define('DB_HOST', getenv('MYSQLHOST') ?: 'localhost');
+define('DB_USER', getenv('MYSQLUSER') ?: 'root');
+define('DB_PASS', getenv('MYSQLPASSWORD') ?: '');
+define('DB_NAME', getenv('MYSQLDATABASE') ?: 'ugat_db');
+define('DB_PORT', (int)(getenv('MYSQLPORT') ?: 3306));
 
 // Create connection
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
